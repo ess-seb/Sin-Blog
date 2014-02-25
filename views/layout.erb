@@ -21,12 +21,8 @@
 	</style>
 </head>
 <body>
-	<div id="center">
-		<ul>
-		  <% for post in @post_list %>
-		    <li><%= post.title %>: <% post.content %></li>
-		  <% end %>
-		</ul>
-	</div> 
+
+	<%= yield %>
+
 </body>
 </html>

@@ -1,22 +1,12 @@
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' #gem sinatra-contrib
 require 'pry'
 require 'haml'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
 
-# get '/hi' do
-#   "Hello World!"
-# end
-
-# get '/yo/:name' do
-# 	yo = params[:name]
-#   # matches "GET /hello/foo" and "GET /hello/bar"
-#   # params[:name] is 'foo' or 'bar'
-#   @napis = "Hello #{yo}!"
-# end
-
-
+#skopiować binarki z http://www.sqlite.org/download.html do katalogu ruby200/bin
+#może trzeba też do system32 i
 
 #set :haml, :format => :html5
 
@@ -33,23 +23,26 @@ get '/viewerb' do
   erb :viewerb, :locals => {:items => @items}
 end
 
-get '/posts/new' do 
-	erb :view_newpost, lay
+get '/posts/new' do
+	erb :view_newpost
 end
 
-post '/posts/create' do 
-		# binding.pry params
-	
+post '/posts/create' do
+        print params
+		#binding.pry params
+
 		# my_post = Post.new
 
 		# my_post.attributes = params
 		# my_post.save
-		Post.create(:title => params[:title], :body => params[:content])
+        puts params[:content]
+		Post.create(title: params[:title], content: params[:content])
 end
 
 get '/posts' do
+
 		@post_list = Post.all
-		erb :posts_list 
+		erb :posts_list
 end
 
 
@@ -65,7 +58,7 @@ class Post
     include DataMapper::Resource
     property :id, Serial
     property :title, String
-    property :body, Text
+    property :content, Text
     property :created_at, DateTime
 end
 
