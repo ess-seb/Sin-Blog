@@ -35,8 +35,8 @@ post '/posts/create' do
 
 		# my_post.attributes = params
 		# my_post.save
-        puts params[:content]
-		Post.create(title: params[:title], content: params[:content])
+        puts params[:body]
+		Post.create(title: params[:title], body: params[:body])
 end
 
 get '/posts' do
@@ -58,7 +58,7 @@ class Post
     include DataMapper::Resource
     property :id, Serial
     property :title, String
-    property :content, Text
+    property :body, Text
     property :created_at, DateTime
 end
 

@@ -1,7 +1,7 @@
 	<div id="center">
 		<ul>
 		  <% for post in @post_list %>
-		    <li><%= post.title %>: <% post.body %></li>
+		    <li><%= post.title %>: <%= post.body %></li>
 		  <% end %>
 		</ul>
 	</div>
