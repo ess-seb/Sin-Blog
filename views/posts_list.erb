@@ -1,7 +1,11 @@
 	<div id="center">
 		<ul>
 		  <% for post in @post_list %>
-		    <li><%= post.title %>: <%= post.body %></li>
+		    <li>
+		    <%= post.title %>
+		    	<a href="/posts/edit/<%= post.id %>">Edit</a>
+		    	<a href="/posts/destroy/<%= post.id %>">Kill</a>
+		    </li>
 		  <% end %>
 		</ul>
 	</div>

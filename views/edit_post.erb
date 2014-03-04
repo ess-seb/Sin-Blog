@@ -1,0 +1,15 @@
+	<div id="center">
+		<form action="/posts/update/<%= @post.id %>" method="post">
+			<div class="sec">
+				<label for="title">Tytuł:</label><br>
+				<input type="text" name="post[title]" value="<%= @post.title %>">
+			</div>
+			<div class="sec">
+				<label for="content">Treść:</label><br>
+				<textarea rows="4" cols="50" name="post[body]"><%= @post.body %></textarea>
+			</div>
+			<div class="sec">
+				<input type="submit" value="Update">
+			</div>
+		</form>
+	</div>
