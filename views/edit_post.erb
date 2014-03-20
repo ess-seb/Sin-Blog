@@ -1,15 +1,26 @@
-	<div id="center">
-		<form action="/posts/update/<%= @post.id %>" method="post">
-			<div class="sec">
-				<label for="title">Tytuł:</label><br>
-				<input type="text" name="post[title]" value="<%= @post.title %>">
-			</div>
-			<div class="sec">
-				<label for="content">Treść:</label><br>
-				<textarea rows="4" cols="50" name="post[body]"><%= @post.body %></textarea>
-			</div>
-			<div class="sec">
-				<input type="submit" value="Update">
-			</div>
-		</form>
+	<div class="container-fluid">
+		<div class="row">
+			<form action="/posts/update/<%= @post.id %>" method="post" role="form" class="form-horizontal">
+				<div class="form-group">
+					<label for="title" class="control-label col-sm-2">Tytuł:</label>
+					<div class="col-sm-10">
+						<input type="text" name="post[title]" value="<%= @post.title %>" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="content" class="control-label col-sm-2">Treść:</label>
+					<div class="col-sm-10">
+						<textarea rows="4" cols="50" name="post[body]" class="form-control">
+						<%= @post.body %>
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" value="Update" class="btn btn-default">Update</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
 	</div>

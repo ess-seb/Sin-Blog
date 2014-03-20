@@ -1,11 +1,11 @@
-	<div id="center">
-		<ul>
-		  <% for post in @post_list %>
-		    <li>
-		    <%= post.title %>
-		    	<a href="/posts/edit/<%= post.id %>">Edit</a>
-		    	<a href="/posts/destroy/<%= post.id %>">Kill</a>
-		    </li>
-		  <% end %>
-		</ul>
+	<div class="container-fluid">
+			<div class="row">
+	  		<% for post in @post_list %>
+	  		    <div class="col-md-12">
+	  		    	<h3><%= post.title %></h3>
+	  		    	<a href="/posts/edit/<%= post.id %>" class="btn-succes">Edit</a>
+	  		    	<a href="/posts/destroy/<%= post.id %>" class="btn btn-danger">Kill</a>
+	  		    </div >
+	  		  <% end %>
+	  		</div>
 	</div>

@@ -1,0 +1,300 @@
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+
+
+
+/* LATO */
+
+
+/*
+
+
+div.wrapper{
+	 margin: 0 auto;
+	 display: block;
+	 white-space: nowrap;
+	 text-align: center;
+	 padding-bottom: 20px;
+	 min-height: 100%;
+	 width: auto;
+}
+
+div.wrapper > *{
+	 display: inline-block;
+	 white-space: normal;
+	 vertical-align: top;
+}
+
+div{
+	 margin: 0 80px;
+	 text-align: left;
+	 width: 600px;
+}
+
+h1{
+	 font-size: 64px;
+	 line-height: 73px;
+	 margin-bottom: 25px;
+}
+
+p{
+	 font-size: 17px;
+	 line-height: 26px;
+	 margin-bottom: 35px;
+}
+
+p.weights{
+	 letter-spacing: 2px;
+	 font-size: 13px;
+	 color: rgba(173,173,173,1);
+	 margin-bottom: 35px;
+	 border-width: 0px 0px 1px 0px;
+	 border-style: dotted;
+	 margin-top: 45px;
+}
+
+p.pullquote{
+	 font-size: 17px;
+	 line-height: 26px;
+	 margin-bottom: 35px;
+	 padding-left: 15px;
+	 border-width: 0px 0px 0px 3px;
+	 border-style: solid;
+	 font-weight: 700;
+}
+
+p.map{
+	 font-weight: 400;
+	 font-style: normal;
+	 margin-bottom: 0px;
+	 text-align: justify;
+	 font-size: 27px;
+	 line-height: 54px;
+	 margin-top: 0px;
+}
+
+p.heading{
+	 letter-spacing: 2px;
+	 font-size: 13px;
+	 margin-bottom: 35px;
+	 border-width: 0px 0px 1px 0px;
+	 border-style: dotted;
+	 margin-top: 45px;
+	 color: rgba(0,0,0,1);
+}
+
+p.intro{
+	 margin-bottom: 35px;
+	 font-size: 21px;
+	 line-height: 28px;
+	 -webkit-column-rule-style: solid;
+	 -o-column-rule-style: solid;
+	 -moz-column-rule-style: solid;
+	 -ms-column-rule-style: solid;
+	 column-rule-style: solid;
+}
+
+p.inverse-big{
+	 background-color: rgba(51,51,51,1);
+	 color: rgba(255,255,255,1);
+	 padding: 30px;
+	 margin-bottom: 0px;
+}
+
+p.inverse-med{
+	 background-color: rgba(51,51,51,1);
+	 color: rgba(255,255,255,1);
+	 padding: 30px;
+	 margin-bottom: 0px;
+	 padding-top: 0px;
+	 font-size: 15px;
+}
+
+p.inverse-small{
+	 padding-top: 0px;
+	 padding-left: 30px;
+	 padding-right: 30px;
+	 padding-bottom: 30px;
+	 background-color: rgba(51,51,51,1);
+	 color: rgba(255,255,255,1);
+	 font-size: 13px;
+}
+
+p.inverse-heading{
+	 background-color: rgba(51,51,51,1);
+	 color: rgba(255,255,255,1);
+	 padding: 30px;
+	 margin-bottom: 0px;
+	 padding-bottom: 0px;
+	 font-size: 15px;
+	 letter-spacing: 2px;
+	 margin-top: 50px;
+}
+
+body{
+	 padding: 50px 0;
+	 font-size: 13px;
+	 font-family: "Lato";
+	 font-style: normal;
+	 font-weight: 400;
+}
+
+p.weight1{
+	 font-family: "Lato";
+	 font-weight: 100;
+	 font-style: italic;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight2{
+	 font-family: "Lato";
+	 font-weight: 100;
+	 font-style: normal;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight3{
+	 font-family: "Lato";
+	 font-weight: 300;
+	 font-style: italic;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight4{
+	 font-family: "Lato";
+	 font-weight: 300;
+	 font-style: normal;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight5{
+	 font-family: "Lato";
+	 font-weight: 400;
+	 font-style: italic;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight6{
+	 font-family: "Lato";
+	 font-weight: 400;
+	 font-style: normal;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight7{
+	 font-family: "Lato";
+	 font-weight: 700;
+	 font-style: italic;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight8{
+	 font-family: "Lato";
+	 font-weight: 700;
+	 font-style: normal;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight9{
+	 font-family: "Lato";
+	 font-weight: 900;
+	 font-style: italic;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+p.weight10{
+	 font-family: "Lato";
+	 font-weight: 900;
+	 font-style: normal;
+	 font-size: 36px;
+	 line-height: 30px;
+}
+
+*/
