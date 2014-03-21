@@ -1,11 +1,32 @@
-	<div class="container-fluid">
-			<div class="row">
-	  		<% for post in @post_list %>
-	  		    <div class="col-md-12">
-	  		    	<h3><%= post.title %></h3>
-	  		    	<a href="/posts/edit/<%= post.id %>" class="btn-succes">Edit</a>
-	  		    	<a href="/posts/destroy/<%= post.id %>" class="btn btn-danger">Kill</a>
-	  		    </div >
-	  		  <% end %>
-	  		</div>
-	</div>
+		<div class="row">
+			<div class="jumbotron col-sm-12">
+		        <h1>Ta aplikacja jest wielce wspaniała!</h1>
+		        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+		        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+			</div>
+		</div>
+  		<% for post in @post_list %>
+		<article class="row home-list">
+  		    <div class="col-md-12">
+  		    	<h3> <%= post.title %> </h3>
+  		    	<p> <%= post.body %> </p>
+  		    	<div class="btn-group pull-right">
+	  		    	<a href="/posts/comment/<%= post.id %>" class="btn btn-default"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Dodaj komentarz</a>
+					<div class="btn-group">
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					    <span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Modyfikuj&nbsp;<span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" role="menu">
+					    <li>
+						    <a href="/posts/edit/<%= post.id %>" class=""><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edytuj treść</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+						  	<a href="/posts/destroy/<%= post.id %>" class=""><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Zabij</a>
+						</li>
+					  </ul>
+					</div>
+				</div>
+  		    </div >
+  		</article>
+  		<% end %>
