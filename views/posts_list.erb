@@ -11,7 +11,7 @@
   		    	<h3> <%= post.title %> </h3>
   		    	<p> <%= post.body %> </p>
   		    	<div class="btn-group pull-right">
-	  		    	<a href="/posts/comment/<%= post.id %>" class="btn btn-default"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Dodaj komentarz</a>
+	  		    	<a href="/comment/new/<%= post.id %>" class="btn btn-default"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Dodaj komentarz</a>
 					<div class="btn-group">
 					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 					    <span class="glyphicon glyphicon-wrench"></span>&nbsp;&nbsp;Modyfikuj&nbsp;<span class="caret"></span>
@@ -27,6 +27,11 @@
 					  </ul>
 					</div>
 				</div>
-  		    </div >
+				<div class="comments_holder"> <!-- komentarz -->
+				<% for comment in post.comments %>
+					<p id="<%= comment.id %>_comm" > <%= comment.body %> <a class="del_com" href="/comment/destroy/<%= comment.id %>">Usuń</a></p>
+				<% end %>
+				</div>
+  		    </div>
   		</article>
   		<% end %>

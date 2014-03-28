@@ -1,0 +1,27 @@
+
+	<div class="row">
+		<form action="/comment/create" method="post" role="form" class="form-horizontal">
+			<div class="form-group"><h3 class="col-sm-offset-2 col-sm-10">Dodaj nowy komentarz</h3></div>
+			<!-- <div class="form-group">
+				<label for="title" class="control-label col-sm-2">Tytuł:</label>
+				<div class="col-sm-10">
+					<input type="text" name="" class="form-control">
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label for="content" class="control-label col-sm-2">Treść:</label>
+				<div class="col-sm-10">
+					<textarea rows="4" cols="50" name="body" class="form-control"></textarea>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="hidden" name="comment_post_id" value="<%= @post_id %>">
+					<button type="submit" value="Dodaj post" class="btn btn-default">Dodaj komentarz</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+

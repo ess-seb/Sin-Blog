@@ -8,6 +8,7 @@ require 'dm-sqlite-adapter'
 require 'rubygems'
 require 'sinatra'
 require 'data_mapper' # metagem, requires common plugins too.
+require 'json'
 
 #skopiować binarki z http://www.sqlite.org/download.html do katalogu ruby200/bin
 #może trzeba też do system32 i
@@ -28,7 +29,7 @@ class Post
     property :visible, Boolean
     property :created_at, DateTime
     has n, :comments
-    belongs_to :user
+    # belongs_to :user
 end
 
 
@@ -36,20 +37,20 @@ class Comment
     include DataMapper::Resource
     property :id, Serial
     property :body, Text
-    property :created_at, DateTime
-    belongs_to :user
-    belongs_to :post
+    # property :created_at, DateTime
+    # belongs_to :user
+    belongs_to :post #tworzy kolumnę domyślnie nazywającą się post_id
 end
 
 
-class User
-    include DataMapper::Resource
-    property :id, Serial, :key => true
-    property :name, String, :length => 3..50
-    property :email, String
-    property :password, BCryptHash
-    property :created_at, DateTime
-end
+# class User
+#     include DataMapper::Resource
+#     property :id, Serial, :key => true
+#     property :name, String, :length => 3..50
+#     property :email, String
+#     property :password, BCryptHash
+#     property :created_at, DateTime
+# end
 
 
 # Perform basic sanity checks and initialize all relationships
@@ -58,6 +59,7 @@ DataMapper.finalize
 
 # automatically create the post table
 Post.auto_upgrade!
+Comment.auto_upgrade!
 
 
 
@@ -116,8 +118,30 @@ end
 # list this shit
 get '/posts' do
 	@post_list = Post.all
+	@comment_list = Comment.all
 	erb :posts_list
 end
+
+
+get '/comment/new/:post_id' do
+	@post_id = params[:post_id]
+	erb :comment_newform
+end
+
+
+post '/comment/create' do
+	Comment.create(body: params[:body], post_id: params[:comment_post_id])
+	redirect "/posts"
+end
+
+post '/comment/destroy/:id' do
+	to_destroy = Comment.get(params[:id])
+	to_destroy.destroy
+	content_type :json
+	{ :id => params[:id] }.to_json
+	# redirect '/posts'
+end
+
 
 not_found do
   halt 404, 'page not found'
