@@ -32,6 +32,14 @@
 					<p id="<%= comment.id %>_comm" > <%= comment.body %> <a class="del_com" href="/comment/destroy/<%= comment.id %>">Usuń</a></p>
 				<% end %>
 				</div>
+				<% if post.tags %>
+					<div class="tag_holder">
+					<h4>Tagi</h4>
+					<% for tag in post.tags %>
+						<p> <%= tag.name %> </p>
+					<% end %>
+					</div>
+				<% end %>
   		    </div>
   		</article>
   		<% end %>

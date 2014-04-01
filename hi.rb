@@ -13,9 +13,9 @@ require 'json'
 #skopiować binarki z http://www.sqlite.org/download.html do katalogu ruby200/bin
 #może trzeba też do system32 i
 
-#set :haml, :format => :html5
+# set :erb, :format => :html5
 # need install dm-sqlite-adapter
-
+set layout_engine: :haml
 
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/blog.db")
@@ -28,6 +28,7 @@ class Post
     property :created_at, DateTime
     property :visible, Boolean
     property :created_at, DateTime
+    has n, :tags, :through => Resource
     has n, :comments
     # belongs_to :user
 end
@@ -40,6 +41,13 @@ class Comment
     # property :created_at, DateTime
     # belongs_to :user
     belongs_to :post #tworzy kolumnę domyślnie nazywającą się post_id
+end
+
+class Tag
+	include DataMapper::Resource
+	property :id, Serial
+	property :name, Text
+	has n, :posts, :through => Resource
 end
 
 
@@ -57,9 +65,11 @@ end
 # Call this when you've defined all your models
 DataMapper.finalize
 
+DataMapper.auto_upgrade!
 # automatically create the post table
-Post.auto_upgrade!
-Comment.auto_upgrade!
+# Post.auto_upgrade!
+# Comment.auto_upgrade!
+# Tag.auto_upgrade!
 
 
 
@@ -97,13 +107,18 @@ end
 # update
 get '/posts/edit/:id' do
 	@post = Post.get(params[:id])
+	@tags = Tag.all
 	erb :edit_post
 end
 
 
 post '/posts/update/:id' do
-	to_edit = Post.get(params[:id])
-	to_edit.update(params[:post])
+	post = Post.get(params[:id])
+	tags = params[:tags]
+	
+	post.tags << arr
+	post.save
+	#post.update(params[:post])
 	redirect '/posts'
 end
 
@@ -134,6 +149,7 @@ post '/comment/create' do
 	redirect "/posts"
 end
 
+
 post '/comment/destroy/:id' do
 	to_destroy = Comment.get(params[:id])
 	to_destroy.destroy
@@ -142,6 +158,16 @@ post '/comment/destroy/:id' do
 	# redirect '/posts'
 end
 
+
+get '/tag/new' do
+	haml :tag_newform
+end
+
+
+post '/tag/create' do
+	Tag.create(name: params[:tag_name])
+	redirect '/posts'
+end
 
 not_found do
   halt 404, 'page not found'

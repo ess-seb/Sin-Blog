@@ -12,9 +12,19 @@
 				<div class="form-group">
 					<label for="content" class="control-label col-sm-2">Treść:</label>
 					<div class="col-sm-10">
-						<textarea rows="4" cols="50" name="post[body]" class="form-control">
+						<textarea id="content" rows="4" cols="50" name="post[body]" class="form-control">
 						<%= @post.body %>
 						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="tag_holder">
+					<label for="sel_tag" class="control-label col-sm-2">Wybierz tagi</label>
+					<div class="col-sm-10">
+						<% for tag in @tags %>
+							<input name="tags[]" value="<%= tag.id %>" type="checkbox"><%= tag.name %>
+						<% end %>
+					</div>
 					</div>
 				</div>
 				<div class="form-group">

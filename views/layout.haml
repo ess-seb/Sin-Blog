@@ -1,0 +1,46 @@
+!!!
+%html{:lang => "pl"}
+  %head
+    %meta{:charset => "utf-8"}
+      %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+        %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+          %meta{:content => "", :name => "description"}
+            %meta{:content => "", :name => "author"}
+              %link{:href => "images/favicon.ico", :rel => "shortcut icon"}
+                %title Blooog
+                / Bootstrap core CSS
+                %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js", :type => "text/javascript"}
+                %script{:src => "/js/bootstrap.min.js"}
+                %script{:src => "/js/script.js"}
+                %link{:href => "/css/bootstrap.min.css", :rel => "stylesheet"}
+                  / Custom styles for this template
+                  %link{:href => "/css/style.css", :rel => "stylesheet"}
+                    / Just for debugging purposes. Don't actually copy this line!
+                    /[if lt IE 9] <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
+                    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+                    /[if lt IE 9]
+                      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                    :javascript
+                      $(document).ready(function() {
+                        $('.dropdown-toggle').dropdown()
+                      });
+      %body
+    .container
+      %nav.header.col-sm-12
+        %ul.nav.nav-pills.pull-right
+          %li
+            %a{:href => "/posts/new"}
+              %span.glyphicon.glyphicon-plus>
+              \&nbsp;&nbsp;Dodaj post
+          %li
+            %a{:href => "/tag/new"}
+              %span.glyphicon.glyphicon-tag>
+              \&nbsp;&nbsp;Dodaj tag
+        %h3.text-muted
+          %a{:href => "/posts"}
+            %span.glyphicon.glyphicon-fire>
+            \&nbsp;SinBlog
+      = yield
+      %footer.footer
+        %p &copy; Sebastian 2014
