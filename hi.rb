@@ -9,6 +9,8 @@ require 'rubygems'
 require 'sinatra'
 require 'data_mapper' # metagem, requires common plugins too.
 require 'json'
+require 'bcrypt'
+
 
 #skopiować binarki z http://www.sqlite.org/download.html do katalogu ruby200/bin
 #może trzeba też do system32 i
@@ -50,21 +52,29 @@ class Tag
 	has n, :posts, :through => Resource
 end
 
+class User
+    include DataMapper::Resource
+    include BCrypt
 
-# class User
-#     include DataMapper::Resource
-#     property :id, Serial, :key => true
-#     property :name, String, :length => 3..50
-#     property :email, String
-#     property :password, BCryptHash
-#     property :created_at, DateTime
-# end
+    property :id, Serial, :key => true
+    property :username, String, :length => 3..50
+    property :password, BCryptHash
+
+    def authenticate(attempted_password)
+    if self.password == attempted_password
+      true
+    else
+      false
+    end
+  end
+end
+
+
 
 
 # Perform basic sanity checks and initialize all relationships
 # Call this when you've defined all your models
 DataMapper.finalize
-
 DataMapper.auto_upgrade!
 # automatically create the post table
 # Post.auto_upgrade!
@@ -107,7 +117,7 @@ end
 # update
 get '/posts/edit/:id' do
 	@post = Post.get(params[:id])
-	@tags = Tag.all
+	# @tags = Tag.all
 	erb :edit_post
 end
 
@@ -115,7 +125,7 @@ end
 post '/posts/update/:id' do
 	post = Post.get(params[:id])
 	tags = params[:tags]
-	
+
 	post.tags << arr
 	post.save
 	#post.update(params[:post])
